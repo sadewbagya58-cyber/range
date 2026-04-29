@@ -66,13 +66,13 @@ const AboutUs = () => {
               {[
                 { 
                   icon: Target, 
-                  title: 'Precision Mission', 
-                  text: 'To engineer the world\'s most reliable digital infrastructure for logistics professionals.' 
+                  title: "Precision Mission", 
+                  text: "To engineer the world's most reliable digital infrastructure for logistics professionals." 
                 },
                 { 
                   icon: Eye, 
-                  title: 'Global Vision', 
-                  text: 'To become the singular standard for B2B maritime and freight connections.' 
+                  title: "Global Vision", 
+                  text: "To become the singular standard for B2B maritime and freight connections." 
                 }
               ].map((item, i) => (
                 <motion.div

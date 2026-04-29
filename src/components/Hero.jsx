@@ -69,7 +69,6 @@ const Hero = () => {
               Strategic Alliances
             </button>
           </motion.div>
-      </div>
 
           {/* Institutional Stats */}
           <motion.div
