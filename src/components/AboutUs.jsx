@@ -18,7 +18,7 @@ const AboutUs = () => {
             >
               <img 
                 src={aboutImage} 
-                alt="Maritime Logistics Operations"
+                alt="Global Logistics Network"
                 className="w-full h-[500px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent" />
@@ -32,8 +32,8 @@ const AboutUs = () => {
               transition={{ delay: 0.5 }}
               className="absolute -bottom-8 -right-8 bg-brand-orange p-8 rounded-2xl shadow-2xl z-20 hidden md:block"
             >
-              <div className="text-4xl font-bold text-white mb-1">15+</div>
-              <div className="text-sm font-semibold text-white/80 uppercase tracking-widest leading-tight">Years of <br />Excellence</div>
+              <div className="text-4xl font-bold text-white mb-1">GLOBAL</div>
+              <div className="text-sm font-semibold text-white/80 uppercase tracking-widest leading-tight">B2B Network <br />Marketplace</div>
             </motion.div>
           </div>
 
@@ -43,9 +43,9 @@ const AboutUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-8">Pioneering Excellence in <span className="text-brand-orange">Global Marine</span> Logistics</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8">Standardizing Global <span className="text-brand-orange">Shipping</span> Connections</h2>
               <p className="text-white/60 text-lg mb-8 leading-relaxed">
-                Wide Range Enterprises (Pvt) Ltd is a premier marine and logistics solutions provider based in Sri Lanka. With a deep understanding of the maritime landscape, we deliver comprehensive services that range from complex ship brokering to specialized technical repairs.
+                Ruzave is the world's most comprehensive B2B marketplace dedicated to the shipping and logistics industry. We provide a transparent, efficient ecosystem where shippers, carriers, and specialized service providers connect to streamline the global supply chain.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
@@ -53,15 +53,15 @@ const AboutUs = () => {
                   <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center text-brand-orange">
                     <Target size={24} />
                   </div>
-                  <h4 className="text-xl font-bold">Our Mission</h4>
-                  <p className="text-white/50 text-sm">To provide speed, precision, and trust in every maritime solution we deliver, ensuring vessel efficiency and client satisfaction.</p>
+                  <h4 className="text-xl font-bold text-white">Our Mission</h4>
+                  <p className="text-white/50 text-sm">To empower logistics businesses worldwide by providing digital tools for networking, partnership discovery, and operational efficiency.</p>
                 </div>
                 <div className="space-y-4">
                   <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center text-brand-orange">
                     <Eye size={24} />
                   </div>
-                  <h4 className="text-xl font-bold">Our Vision</h4>
-                  <p className="text-white/50 text-sm">To be the most trusted name in international marine logistics, setting standards for safety and operational excellence.</p>
+                  <h4 className="text-xl font-bold text-white">Our Vision</h4>
+                  <p className="text-white/50 text-sm">To become the singular global directory that bridges the gap between local expertise and international demand in maritime trade.</p>
                 </div>
               </div>
 
@@ -69,13 +69,13 @@ const AboutUs = () => {
                 <div className="flex -space-x-3">
                   {[1,2,3,4].map(i => (
                     <div key={i} className="w-10 h-10 rounded-full border-2 border-brand-dark bg-brand-navy flex items-center justify-center overflow-hidden">
-                      <img src={`https://i.pravatar.cc/150?u=${i}`} alt="Team member" />
+                      <img src={`https://i.pravatar.cc/150?u=${i}`} alt="Member" />
                     </div>
                   ))}
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-white">Join 500+ Global Partners</div>
-                  <div className="text-xs text-white/40">Trusted by international shipping lines and port authorities.</div>
+                  <div className="text-sm font-bold text-white uppercase tracking-wider">Join 5,000+ Enterprise Members</div>
+                  <div className="text-xs text-white/40">Verified shipping agents, clearing houses, and freight forwarders.</div>
                 </div>
               </div>
             </motion.div>

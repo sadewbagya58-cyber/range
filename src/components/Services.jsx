@@ -4,31 +4,31 @@ import { Anchor, Settings, Droplet, Truck, ShieldCheck, ChevronRight } from 'luc
 
 const services = [
   {
-    title: 'Ship Brokering',
-    description: 'Expert brokerage for Container ships, Dry Cargo, and Tankers. We connect global maritime demand with precision.',
+    title: 'Freight Forwarding',
+    description: 'Dynamic orchestration of global trade. We connect you with top-tier carriers for seamless air, ocean, and project cargo solutions.',
     icon: Anchor,
-    items: ['Container Vessels', 'Dry Cargo', 'Tanker Operations', 'Chartering'],
+    items: ['Air Freight Forwarding', 'Ocean Logistics (LCL/FCL)', 'Project & Heavy Lift', 'Dangerous Goods (DG)'],
     color: 'from-orange-500 to-orange-700'
   },
   {
-    title: 'Technical Repairs',
-    description: 'Specialized maintenance for Engines, PCB systems, Bridge Equipment, and Life Safety gear.',
+    title: 'Maritime Agency',
+    description: 'Comprehensive port and vessel management services. From ship brokerage to technical repairs and chandling.',
     icon: Settings,
-    items: ['Engine Maintenance', 'PCB & Electronics', 'Bridge Equipment', 'Life Safety Systems'],
+    items: ['Port Agency Services', 'Ship Management', 'Technical Ship Repairs', 'Marine Insurance'],
     color: 'from-blue-500 to-blue-700'
   },
   {
-    title: 'Cleaning & Maintenance',
-    description: 'Comprehensive solutions including Tank cleaning, Hydroblasting, and professional Painting services.',
+    title: 'Smart Warehousing',
+    description: 'Scalable storage solutions designed for modern supply chains. Temperature-controlled and bonded facilities worldwide.',
     icon: Droplet,
-    items: ['Tank Cleaning', 'Hydroblasting', 'Marine Painting', 'Hull Maintenance'],
+    items: ['Bonded Warehousing', 'Cold & Reefer Storage', 'Container Depots', 'Inventory Management'],
     color: 'from-emerald-500 to-emerald-700'
   },
   {
-    title: 'Specialized Logistics',
-    description: 'End-to-end support with Custom clearing and Marine legal consultancy for smooth operations.',
+    title: 'Inland & Intermodal',
+    description: 'Integrated land and rail logistics ensuring last-mile precision and cost-effective regional distribution.',
     icon: Truck,
-    items: ['Custom Clearing', 'Marine Legal Support', 'Port Agency', 'Supply Chain Management'],
+    items: ['Land & Rail Logistics', 'FTL/LTL Trucking', 'Customs Clearance', 'Last-Mile Delivery'],
     color: 'from-purple-500 to-purple-700'
   }
 ];
@@ -47,7 +47,7 @@ const Services = () => {
             viewport={{ once: true }}
             className="inline-block px-4 py-1 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-xs font-bold uppercase tracking-widest mb-4"
           >
-            Our Core Pillars
+            Global Marketplace
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -56,7 +56,7 @@ const Services = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-bold mb-6"
           >
-            Complete Marine <span className="text-brand-orange text-gradient">Infrastructure</span>
+            Integrated <span className="text-brand-orange text-gradient">Logistics</span> Solutions
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -65,7 +65,7 @@ const Services = () => {
             transition={{ delay: 0.2 }}
             className="text-white/60 max-w-2xl mx-auto text-lg"
           >
-            We provide integrated solutions across four strategic pillars to ensure your maritime operations are seamless, safe, and efficient.
+            Access a comprehensive ecosystem of verified service providers, standardizing the global supply chain through transparency and efficiency.
           </motion.p>
         </div>
 

@@ -10,13 +10,13 @@ const Footer = () => {
           
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
-              <img src={logo} alt="Logo" className="w-10 h-10 object-contain" />
+              <img src={logo} alt="Ruzave Logo" className="w-10 h-10 object-contain" />
               <span className="text-xl font-display font-bold tracking-tight">
-                WIDE RANGE <span className="text-brand-orange">ENTERPRISES</span>
+                RUZAVE <span className="text-brand-orange">GLOBAL</span>
               </span>
             </div>
             <p className="text-white/40 text-sm leading-relaxed">
-              Leading the maritime industry with innovative solutions and unparalleled service reliability. Committed to precision and safety across all global ports.
+              The world's premier B2B marketplace for the shipping and logistics industry. Empowering businesses with global connectivity and precision networking.
             </p>
             <div className="flex space-x-4">
               {[Globe, Share2, Anchor, MessageCircle].map((Icon, i) => (
@@ -28,41 +28,41 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-6">Quick Links</h4>
+            <h4 className="text-lg font-bold mb-6">Marketplace</h4>
             <ul className="space-y-4 text-sm text-white/50">
-              <li><a href="#" className="hover:text-brand-orange transition-colors">Home</a></li>
-              <li><a href="#services" className="hover:text-brand-orange transition-colors">Services</a></li>
-              <li><a href="#about" className="hover:text-brand-orange transition-colors">About Us</a></li>
-              <li><a href="#contact" className="hover:text-brand-orange transition-colors">Contact Us</a></li>
-              <li><a href="#" className="hover:text-brand-orange transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="hover:text-brand-orange transition-colors">Global Directory</a></li>
+              <li><a href="#services" className="hover:text-brand-orange transition-colors">Freight Services</a></li>
+              <li><a href="#about" className="hover:text-brand-orange transition-colors">Business Alliances</a></li>
+              <li><a href="#contact" className="hover:text-brand-orange transition-colors">Inquiry System</a></li>
+              <li><a href="#" className="hover:text-brand-orange transition-colors">Member Benefits</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-6">Our Services</h4>
+            <h4 className="text-lg font-bold mb-6">Services</h4>
             <ul className="space-y-4 text-sm text-white/50">
-              <li><a href="#" className="hover:text-brand-orange transition-colors">Ship Brokering</a></li>
-              <li><a href="#" className="hover:text-brand-orange transition-colors">Technical Repairs</a></li>
-              <li><a href="#" className="hover:text-brand-orange transition-colors">Cleaning & Maintenance</a></li>
-              <li><a href="#" className="hover:text-brand-orange transition-colors">Specialized Logistics</a></li>
-              <li><a href="#" className="hover:text-brand-orange transition-colors">Custom Clearing</a></li>
+              <li><a href="#" className="hover:text-brand-orange transition-colors">Ocean Logistics</a></li>
+              <li><a href="#" className="hover:text-brand-orange transition-colors">Air Freight Solutions</a></li>
+              <li><a href="#" className="hover:text-brand-orange transition-colors">Port Agency</a></li>
+              <li><a href="#" className="hover:text-brand-orange transition-colors">Smart Warehousing</a></li>
+              <li><a href="#" className="hover:text-brand-orange transition-colors">Customs Brokerage</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-6">Contact Info</h4>
+            <h4 className="text-lg font-bold mb-6">Contact Global</h4>
             <ul className="space-y-4 text-sm text-white/50">
               <li className="flex gap-3">
                 <MapPin size={18} className="text-brand-orange shrink-0" />
-                <span>55/14, Modara, Colombo 15, Sri Lanka</span>
+                <span>Global Digital Platform - 150+ Countries</span>
               </li>
               <li className="flex gap-3 text-white">
                 <Phone size={18} className="text-brand-orange shrink-0" />
-                <span>+94 770648206</span>
+                <span>+91 95400 00000 (Global Support)</span>
               </li>
               <li className="flex gap-3">
                 <Mail size={18} className="text-brand-orange shrink-0" />
-                <span>widerange.ops@gmail.com</span>
+                <span>support@ruzave.com</span>
               </li>
             </ul>
           </div>
@@ -70,8 +70,8 @@ const Footer = () => {
         </div>
 
         <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/20">
-          <p>© 2026 Wide Range Enterprises (Pvt) Ltd. All rights reserved.</p>
-          <p>Designed for Maritime Excellence.</p>
+          <p>© 2026 Ruzave Global Marketplace. All rights reserved.</p>
+          <p>Connecting the World's Logistics Experts.</p>
         </div>
       </div>
     </footer>

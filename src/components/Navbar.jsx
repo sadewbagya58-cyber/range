@@ -18,9 +18,9 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', href: '#' },
-    { name: 'Services', href: '#services' },
-    { name: 'About Us', href: '#about' },
-    { name: 'Contact Us', href: '#contact' },
+    { name: 'Marketplace', href: '#services' },
+    { name: 'Alliances', href: '#about' },
+    { name: 'Company', href: '#about' },
   ];
 
   return (
@@ -34,10 +34,10 @@ const Navbar = () => {
               transition={{ duration: 0.5 }}
               className="relative w-10 h-10 overflow-hidden rounded-md"
             >
-              <img src={logo} alt="Wide Range logo" className="w-full h-full object-contain" />
+              <img src={logo} alt="Ruzave logo" className="w-full h-full object-contain" />
             </motion.div>
             <span className="text-xl font-display font-bold tracking-tight">
-              WIDE RANGE <span className="text-brand-orange">ENTERPRISES</span>
+              RUZAVE <span className="text-brand-orange">GLOBAL</span>
             </span>
           </div>
 
@@ -47,17 +47,17 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium hover:text-brand-orange transition-colors duration-300"
+                className="text-sm font-medium hover:text-brand-orange transition-colors duration-300 uppercase tracking-widest"
               >
                 {link.name}
               </a>
             ))}
             <a 
               href="#contact" 
-              className="bg-brand-orange hover:bg-brand-orange/90 text-white px-5 py-2 rounded-full text-sm font-semibold transition-all flex items-center gap-2"
+              className="bg-brand-orange hover:bg-brand-orange/90 text-white px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all flex items-center gap-2 shadow-lg shadow-brand-orange/20"
             >
-              <Phone size={16} />
-              Inquire Now
+              <Phone size={14} />
+              Access Marketplace
             </a>
           </div>
 
@@ -82,13 +82,13 @@ const Navbar = () => {
             exit={{ opacity: 0, y: -20 }}
             className="md:hidden absolute top-full left-0 w-full bg-brand-dark/95 backdrop-blur-xl border-b border-white/10"
           >
-            <div className="px-4 pt-2 pb-6 space-y-4">
+            <div className="px-4 pt-4 pb-8 space-y-4">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block text-lg font-medium hover:text-brand-orange transition-colors"
+                  className="block text-lg font-medium hover:text-brand-orange transition-colors uppercase tracking-widest"
                 >
                   {link.name}
                 </a>
@@ -96,9 +96,9 @@ const Navbar = () => {
               <a
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="block w-full text-center bg-brand-orange text-white py-3 rounded-lg font-bold"
+                className="block w-full text-center bg-brand-orange text-white py-4 rounded-xl font-bold uppercase tracking-widest text-sm"
               >
-                Request Port Services
+                Access Marketplace
               </a>
             </div>
           </motion.div>

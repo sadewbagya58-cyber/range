@@ -4,10 +4,10 @@ import { Shield, Globe, Award, Zap } from 'lucide-react';
 
 const TrustIndicators = () => {
   const standards = [
-    { icon: Shield, label: 'ISO 9001:2015', sub: 'Quality Management' },
-    { icon: Globe, label: 'MARPOL Compliant', sub: 'Environmental Protection' },
-    { icon: Award, label: 'BIMCO Member', sub: 'Global Standards' },
-    { icon: Zap, label: '24/7 Ops', sub: 'Rapid Response' },
+    { icon: Shield, label: 'VERIFIED BUSINESS', sub: 'Enterprise Security' },
+    { icon: Globe, label: 'WSAA MEMBER', sub: 'World Ship Agent Alliance' },
+    { icon: Award, label: 'WAFA ALLIANCE', sub: 'World Air Freight Alliance' },
+    { icon: Zap, label: '150+ COUNTRIES', sub: 'Global Connectivity' },
   ];
 
   return (
