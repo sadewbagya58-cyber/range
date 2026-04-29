@@ -6,6 +6,8 @@ import TrustIndicators from './components/TrustIndicators'
 import AboutUs from './components/AboutUs'
 import InquiryForm from './components/InquiryForm'
 import Footer from './components/Footer'
+import Marketplace from './components/Marketplace'
+import Directory from './components/Directory'
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
       <main>
         <Hero />
         <TrustIndicators />
+        <Marketplace />
+        <Directory />
         <Services />
         <AboutUs />
         <InquiryForm />

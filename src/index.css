@@ -5,39 +5,58 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --brand-navy: #002147;
+    --brand-orange: #FF4F00;
+    --brand-dark: #050505;
+  }
+
   body {
-    @apply bg-brand-dark text-white font-sans antialiased;
+    @apply bg-brand-dark text-white font-sans antialiased selection:bg-brand-orange selection:text-white;
     margin: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+    @apply font-display tracking-tight;
   }
 }
 
 @layer components {
   .glass-nav {
-    @apply bg-brand-dark/80 backdrop-blur-md border-b border-white/10;
+    @apply bg-brand-dark/70 backdrop-blur-xl border-b border-white/5;
   }
 
   .btn-primary {
-    @apply bg-brand-orange hover:bg-brand-orange/90 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg shadow-brand-orange/20;
+    @apply relative overflow-hidden bg-brand-orange hover:bg-brand-orange/90 text-white font-bold py-4 px-10 rounded-full transition-all duration-500 transform hover:-translate-y-1 active:translate-y-0 shadow-[0_10px_40px_-10px_rgba(255,79,0,0.4)] uppercase tracking-widest text-xs;
   }
 
   .btn-secondary {
-    @apply bg-transparent border-2 border-white/20 hover:border-brand-orange text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300;
+    @apply bg-white/5 border border-white/10 hover:border-brand-orange/50 hover:bg-white/10 text-white font-bold py-4 px-10 rounded-full transition-all duration-500 uppercase tracking-widest text-xs backdrop-blur-sm;
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60;
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/40;
   }
+
+  .section-padding {
+    @apply py-20 md:py-32;
+  }
+}
+
+/* Custom Utilities */
+.animate-pulse-slow {
+  animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1.05); }
+  50% { opacity: 0.4; transform: scale(1.1); }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -45,9 +64,9 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-brand-navy rounded-full;
+  @apply bg-white/10 rounded-full hover:bg-brand-orange/40 transition-colors;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-brand-orange/50;
-}
+/* Fluid Typography */
+h1 { font-size: clamp(2.5rem, 8vw, 6rem); }
+h2 { font-size: clamp(2rem, 5vw, 4rem); }

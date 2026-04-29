@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Target, Eye, Users } from 'lucide-react';
-import aboutImage from '../assets/about-marine.jpg';
-
 const AboutUs = () => {
+  const aboutImage = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2070"; // Modern logistics warehouse
+
   return (
     <section id="about" className="py-24 bg-brand-dark overflow-hidden">
       <div className="container mx-auto px-4">

@@ -1,19 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Anchor } from 'lucide-react';
-import heroImage from '../assets/hero-marine.jpg';
-
 const Hero = () => {
+  const heroImage = "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=2070"; // Real-world container terminal
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/30 via-brand-dark to-brand-dark z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/60 via-brand-dark/90 to-brand-dark z-10" />
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 animate-pulse-slow"
           style={{ 
-            backgroundImage: `url(${heroImage})`, // Port/Ship background
-            opacity: 0.4
+            backgroundImage: `url(${heroImage})`,
+            opacity: 0.6
           }}
         />
       </div>
