@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Ship, Phone } from 'lucide-react';
+import { Menu, X, Ship, Phone, User, LogOut, LayoutDashboard } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
+import useAuthStore from '../store/useAuthStore';
 
 import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { user, signOut } = useAuthStore();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,17 +21,17 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Solutions', href: '#services' },
-    { name: 'Marketplace', href: '#marketplace' },
-    { name: 'Global Network', href: '#directory' },
-    { name: 'Institutional', href: '#about' },
+    { name: 'Solutions', href: '/#services' },
+    { name: 'Marketplace', href: '/#marketplace' },
+    { name: 'Global Network', href: '/#directory' },
+    { name: 'Institutional', href: '/#about' },
   ];
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-700 ${scrolled ? 'glass-nav py-4' : 'bg-transparent py-8'}`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-4 group cursor-pointer">
+          <Link to="/" className="flex items-center space-x-4 group cursor-pointer">
             <motion.div 
               whileHover={{ rotate: 180 }}
               transition={{ duration: 0.8, ease: "circOut" }}
@@ -41,7 +45,7 @@ const Navbar = () => {
               </span>
               <span className="text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mt-1">Institutional Platform</span>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center space-x-12">
@@ -57,12 +61,40 @@ const Navbar = () => {
               ))}
             </div>
             <div className="h-4 w-px bg-white/10 mx-2" />
-            <a 
-              href="#contact" 
-              className="btn-primary scale-90"
-            >
-              Access Marketplace
-            </a>
+            
+            {user ? (
+              <div className="flex items-center gap-6">
+                <Link 
+                  to="/dashboard" 
+                  className="flex items-center gap-2 text-[10px] font-black text-white/40 hover:text-brand-orange transition-all uppercase tracking-[0.2em]"
+                >
+                  <LayoutDashboard size={14} />
+                  Dashboard
+                </Link>
+                <button 
+                  onClick={signOut}
+                  className="flex items-center gap-2 text-[10px] font-black text-white/40 hover:text-red-400 transition-all uppercase tracking-[0.2em]"
+                >
+                  <LogOut size={14} />
+                  Sign Out
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-6">
+                <Link 
+                  to="/login" 
+                  className="text-[10px] font-black text-white/40 hover:text-brand-orange transition-all uppercase tracking-[0.2em]"
+                >
+                  Sign In
+                </Link>
+                <Link 
+                  to="/register" 
+                  className="btn-primary scale-90"
+                >
+                  Get Started
+                </Link>
+              </div>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -97,14 +129,44 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <div className="pt-6">
-                <a
-                  href="#contact"
-                  onClick={() => setIsOpen(false)}
-                  className="btn-primary w-full py-5"
-                >
-                  Access Marketplace
-                </a>
+              <div className="pt-6 space-y-4 border-t border-white/5">
+                {user ? (
+                  <>
+                    <Link
+                      to="/dashboard"
+                      onClick={() => setIsOpen(false)}
+                      className="block text-2xl font-bold hover:text-brand-orange transition-colors"
+                    >
+                      Dashboard
+                    </Link>
+                    <button
+                      onClick={() => {
+                        signOut();
+                        setIsOpen(false);
+                      }}
+                      className="block text-2xl font-bold text-red-400 hover:text-red-500 transition-colors"
+                    >
+                      Sign Out
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      to="/login"
+                      onClick={() => setIsOpen(false)}
+                      className="block text-2xl font-bold hover:text-brand-orange transition-colors"
+                    >
+                      Sign In
+                    </Link>
+                    <Link
+                      to="/register"
+                      onClick={() => setIsOpen(false)}
+                      className="btn-primary w-full py-5 text-center"
+                    >
+                      Get Started
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </motion.div>
@@ -115,3 +177,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
