@@ -1,0 +1,96 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Anchor } from 'lucide-react';
+import heroImage from '../assets/hero-marine.jpg';
+
+const Hero = () => {
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Background Elements */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/30 via-brand-dark to-brand-dark z-10" />
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 animate-pulse-slow"
+          style={{ 
+            backgroundImage: `url(${heroImage})`, // Port/Ship background
+            opacity: 0.4
+          }}
+        />
+      </div>
+
+      {/* Decorative Orbs */}
+      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-brand-orange/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-brand-navy/20 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="container mx-auto px-4 relative z-20 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8"
+        >
+          <Anchor size={16} className="text-brand-orange" />
+          <span className="text-sm font-medium tracking-wider uppercase text-white/80">Premium Marine Logistics</span>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-8"
+        >
+          Complete <span className="text-brand-orange">Marine</span> Solutions. <br />
+          <span className="text-white/40">Delivered with Precision.</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto mb-12"
+        >
+          Specializing in ship brokering, technical repairs, and specialized logistics for global maritime operations. Trusted speed and reliability in every port of call.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <button className="btn-primary flex items-center justify-center gap-2">
+            Request Port Services
+            <ArrowRight size={20} />
+          </button>
+          <button className="btn-secondary">
+            View Our Services
+          </button>
+        </motion.div>
+      </div>
+
+      {/* Stats Overlay - Optional but adds B2B feel */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="absolute bottom-12 w-full hidden lg:block"
+      >
+        <div className="max-w-4xl mx-auto flex justify-between px-8 border-t border-white/5 pt-8">
+          {[
+            { label: 'Global Coverage', value: '24/7' },
+            { label: 'Technical Experts', value: '50+' },
+            { label: 'Vessels Served', value: '500+' },
+            { label: 'Port Efficiency', value: '100%' },
+          ].map((stat, i) => (
+            <div key={i} className="text-center">
+              <div className="text-2xl font-bold text-white">{stat.value}</div>
+              <div className="text-xs uppercase tracking-widest text-white/40 mt-1">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    </section>
+  );
+};
+
+export default Hero;
