@@ -18,6 +18,9 @@ import Directory from './components/Directory';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Dashboard from './pages/dashboard/Dashboard';
+import CompanyProfile from './pages/dashboard/CompanyProfile';
+import MyListings from './pages/dashboard/MyListings';
+import CreateListing from './pages/dashboard/CreateListing';
 
 function HomePage() {
   return (
@@ -67,6 +70,9 @@ function App() {
             
             {/* Protected Routes */}
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/company" element={<CompanyProfile />} />
+            <Route path="/dashboard/listings" element={<MyListings />} />
+            <Route path="/dashboard/listings/new" element={<CreateListing />} />
             
             {/* Fallback */}
             <Route path="*" element={<Navigate to="/" replace />} />
