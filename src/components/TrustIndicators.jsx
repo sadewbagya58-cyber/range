@@ -30,11 +30,11 @@ const TrustIndicators = () => {
   ];
 
   return (
-    <section className="bg-brand-dark overflow-hidden">
+    <section className="bg-brand-dark overflow-hidden relative">
       {/* Standards Bar */}
-      <div className="py-12 border-y border-white/5 bg-brand-dark/50">
+      <div className="py-16 border-y border-white/5 bg-brand-dark/30 backdrop-blur-sm relative z-10">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-30 grayscale hover:grayscale-0 transition-all duration-1000">
             {standards.map((std, i) => (
               <motion.div 
                 key={i} 
@@ -42,12 +42,14 @@ const TrustIndicators = () => {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex items-center gap-3"
+                className="flex items-center gap-4 group cursor-default"
               >
-                <std.icon size={24} className="text-white" />
+                <div className="p-3 rounded-xl bg-white/5 group-hover:bg-brand-orange/10 group-hover:text-brand-orange transition-all duration-500">
+                  <std.icon size={20} />
+                </div>
                 <div>
-                  <div className="text-sm font-bold text-white tracking-wider">{std.label}</div>
-                  <div className="text-[10px] uppercase text-white/50 tracking-tighter">{std.sub}</div>
+                  <div className="text-[10px] font-black text-white uppercase tracking-[0.2em]">{std.label}</div>
+                  <div className="text-[9px] uppercase text-white/30 tracking-widest mt-1">{std.sub}</div>
                 </div>
               </motion.div>
             ))}
@@ -55,41 +57,53 @@ const TrustIndicators = () => {
         </div>
       </div>
 
-      {/* Partner Logo Carousel - CSS Animation */}
-      <div className="py-16 bg-black/20">
-        <div className="container mx-auto px-4 mb-12 text-center">
-          <div className="text-[10px] font-bold text-white/20 uppercase tracking-[0.3em] mb-4">Strategic Global Partners</div>
-          <div className="flex flex-wrap justify-center items-center gap-12 opacity-30 grayscale contrast-125">
+      {/* Partner Logo Strip */}
+      <div className="py-24 bg-black/40 relative">
+        <div className="container mx-auto px-4 mb-20 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[10px] font-black text-white/10 uppercase tracking-[0.5em] mb-12"
+          >
+            Strategic Institutional Alliances
+          </motion.div>
+          <div className="flex flex-wrap justify-center items-center gap-16 md:gap-24 opacity-20 grayscale contrast-150 hover:opacity-50 transition-all duration-1000">
             {partners.map((partner, i) => (
-              <div key={i} className="text-2xl md:text-3xl font-black italic tracking-tighter text-white">{partner}</div>
+              <div key={i} className="text-3xl md:text-5xl font-black italic tracking-tighter text-white select-none">{partner}</div>
             ))}
           </div>
         </div>
 
         {/* Testimonials */}
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="container mx-auto px-4 pb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {testimonials.map((t, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.2 }}
-                className="p-8 rounded-3xl bg-white/5 border border-white/5 relative"
+                className="premium-card p-12 group relative overflow-hidden"
               >
-                <Quote size={40} className="absolute top-6 right-8 text-brand-orange/10" />
-                <div className="flex items-center gap-1 mb-6">
-                  {[1,2,3,4,5].map(s => <Star key={s} size={14} className="fill-brand-orange text-brand-orange" />)}
+                <Quote size={60} className="absolute -top-4 -right-4 text-brand-orange/5 group-hover:text-brand-orange/10 transition-colors duration-700" />
+                <div className="flex items-center gap-1 mb-10">
+                  {[1,2,3,4,5].map(s => <Star key={s} size={12} className="fill-brand-orange text-brand-orange" />)}
                 </div>
-                <p className="text-white/70 text-lg italic mb-8 leading-relaxed">
+                <p className="text-white/40 text-xl italic mb-12 leading-relaxed font-light">
                   "{t.quote}"
                 </p>
-                <div className="flex items-center gap-4">
-                  <img src={t.avatar} alt={t.author} className="w-12 h-12 rounded-full border border-white/10" />
+                <div className="flex items-center gap-5 pt-8 border-t border-white/5">
+                  <div className="relative">
+                    <img src={t.avatar} alt={t.author} className="w-14 h-14 rounded-full border border-white/10 ring-4 ring-brand-orange/5" />
+                    <div className="absolute -bottom-1 -right-1 bg-brand-orange rounded-full p-1 border-2 border-brand-dark">
+                      <Shield size={10} className="text-white" />
+                    </div>
+                  </div>
                   <div>
-                    <div className="text-white font-bold">{t.author}</div>
-                    <div className="text-white/40 text-xs uppercase tracking-widest">{t.role}</div>
+                    <div className="text-white font-bold text-lg">{t.author}</div>
+                    <div className="text-[10px] text-white/20 uppercase font-black tracking-[0.2em] mt-1">{t.role}</div>
                   </div>
                 </div>
               </motion.div>

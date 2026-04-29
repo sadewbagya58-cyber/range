@@ -35,37 +35,38 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 bg-brand-dark relative overflow-hidden">
+    <section id="services" className="section-padding bg-brand-dark relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-orange/5 blur-[120px] rounded-full -mr-64 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-orange/5 blur-[150px] rounded-full -mr-64 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-brand-navy/5 blur-[120px] rounded-full -ml-32 pointer-events-none" />
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-20">
+        <div className="text-center mb-24">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-1 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-xs font-bold uppercase tracking-widest mb-4"
+            className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/5 text-white/40 text-[10px] font-black uppercase tracking-[0.3em] mb-8"
           >
-            Global Marketplace
+            <Settings size={14} className="text-brand-orange" />
+            Operational Capabilities
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="font-display font-bold text-white mb-10"
           >
-            Integrated <span className="text-brand-orange text-gradient">Logistics</span> Solutions
+            Integrated <span className="text-brand-orange">Logistics</span> Infrastructure
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-white/60 max-w-2xl mx-auto text-lg"
+            transition={{ delay: 0.1 }}
+            className="text-white/40 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed font-light"
           >
-            Access a comprehensive ecosystem of verified service providers, standardizing the global supply chain through transparency and efficiency.
+            Unifying fragmented logistics sectors into a singular, high-performance ecosystem. Built for transparency, speed, and global scale.
           </motion.p>
         </div>
 
@@ -78,31 +79,31 @@ const Services = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -10 }}
-              className="group relative bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/[0.08] transition-all duration-500"
+              className="premium-card p-10 group"
             >
-              <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${service.color} mb-6 shadow-lg shadow-black/20 group-hover:scale-110 transition-transform duration-500`}>
-                <service.icon size={28} className="text-white" />
+              <div className="w-16 h-16 rounded-[1.25rem] bg-brand-orange/10 border border-brand-orange/20 flex items-center justify-center text-brand-orange mb-8 group-hover:bg-brand-orange group-hover:text-white transition-all duration-500 shadow-2xl shadow-brand-orange/5">
+                <service.icon size={32} />
               </div>
               
-              <h3 className="text-2xl font-bold mb-4 group-hover:text-brand-orange transition-colors">
+              <h3 className="text-2xl font-bold text-white mb-6 leading-tight group-hover:text-brand-orange transition-colors">
                 {service.title}
               </h3>
               
-              <p className="text-white/50 text-sm mb-6 leading-relaxed">
+              <p className="text-white/40 text-sm mb-8 leading-relaxed font-light">
                 {service.description}
               </p>
 
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-4 mb-10">
                 {service.items.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2 text-sm text-white/70">
-                    <ShieldCheck size={14} className="text-brand-orange/60" />
+                  <li key={i} className="flex items-center gap-3 text-[11px] font-black uppercase tracking-widest text-white/60 group-hover:text-white transition-colors">
+                    <div className="w-1 h-1 rounded-full bg-brand-orange" />
                     {item}
                   </li>
                 ))}
               </ul>
 
-              <button className="flex items-center gap-2 text-sm font-bold text-brand-orange hover:gap-3 transition-all">
-                Learn More
+              <button className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-white/30 hover:text-brand-orange transition-all group-hover:translate-x-2">
+                Operational Details
                 <ChevronRight size={16} />
               </button>
             </motion.div>

@@ -10,64 +10,68 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'Marketplace', href: '#services' },
-    { name: 'Alliances', href: '#about' },
-    { name: 'Company', href: '#about' },
+    { name: 'Solutions', href: '#services' },
+    { name: 'Marketplace', href: '#marketplace' },
+    { name: 'Global Network', href: '#directory' },
+    { name: 'Institutional', href: '#about' },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav py-4' : 'bg-transparent py-6'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className={`fixed w-full z-50 transition-all duration-700 ${scrolled ? 'glass-nav py-4' : 'bg-transparent py-8'}`}>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-4 group cursor-pointer">
             <motion.div 
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="relative w-10 h-10 overflow-hidden rounded-md"
+              whileHover={{ rotate: 180 }}
+              transition={{ duration: 0.8, ease: "circOut" }}
+              className="relative w-10 h-10 overflow-hidden rounded-xl border border-white/10 group-hover:border-brand-orange/50 transition-colors"
             >
-              <img src={logo} alt="Ruzave logo" className="w-full h-full object-contain" />
+              <img src={logo} alt="Ruzave" className="w-full h-full object-contain p-1.5" />
             </motion.div>
-            <span className="text-xl font-display font-bold tracking-tight">
-              RUZAVE <span className="text-brand-orange">GLOBAL</span>
-            </span>
+            <div className="flex flex-col">
+              <span className="text-xl font-display font-black tracking-tight leading-none">
+                RUZAVE <span className="text-brand-orange">GLOBAL</span>
+              </span>
+              <span className="text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mt-1">Institutional Platform</span>
+            </div>
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-sm font-medium hover:text-brand-orange transition-colors duration-300 uppercase tracking-widest"
-              >
-                {link.name}
-              </a>
-            ))}
+          <div className="hidden lg:flex items-center space-x-12">
+            <div className="flex items-center space-x-10">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-[10px] font-black text-white/40 hover:text-brand-orange transition-all duration-500 uppercase tracking-[0.2em]"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+            <div className="h-4 w-px bg-white/10 mx-2" />
             <a 
               href="#contact" 
-              className="bg-brand-orange hover:bg-brand-orange/90 text-white px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all flex items-center gap-2 shadow-lg shadow-brand-orange/20"
+              className="btn-primary scale-90"
             >
-              <Phone size={14} />
               Access Marketplace
             </a>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-brand-orange transition-colors"
+              className="text-white hover:text-brand-orange transition-colors p-2"
             >
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
@@ -77,29 +81,31 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden absolute top-full left-0 w-full bg-brand-dark/95 backdrop-blur-xl border-b border-white/10"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden absolute top-full left-0 w-full bg-brand-dark/98 backdrop-blur-3xl border-b border-white/5 overflow-hidden"
           >
-            <div className="px-4 pt-4 pb-8 space-y-4">
+            <div className="px-6 pt-8 pb-12 space-y-6">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block text-lg font-medium hover:text-brand-orange transition-colors uppercase tracking-widest"
+                  className="block text-2xl font-bold hover:text-brand-orange transition-colors"
                 >
                   {link.name}
                 </a>
               ))}
-              <a
-                href="#contact"
-                onClick={() => setIsOpen(false)}
-                className="block w-full text-center bg-brand-orange text-white py-4 rounded-xl font-bold uppercase tracking-widest text-sm"
-              >
-                Access Marketplace
-              </a>
+              <div className="pt-6">
+                <a
+                  href="#contact"
+                  onClick={() => setIsOpen(false)}
+                  className="btn-primary w-full py-5"
+                >
+                  Access Marketplace
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
