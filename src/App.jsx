@@ -21,6 +21,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import CompanyProfile from './pages/dashboard/CompanyProfile';
 import MyListings from './pages/dashboard/MyListings';
 import CreateListing from './pages/dashboard/CreateListing';
+import MarketplaceExplorer from './pages/MarketplaceExplorer';
 
 function HomePage() {
   return (
@@ -64,6 +65,7 @@ function App() {
         <div className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/marketplace" element={<MarketplaceExplorer />} />
             {/* Auth Routes */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
