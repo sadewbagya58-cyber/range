@@ -22,6 +22,9 @@ import CompanyProfile from './pages/dashboard/CompanyProfile';
 import MyListings from './pages/dashboard/MyListings';
 import CreateListing from './pages/dashboard/CreateListing';
 import MarketplaceExplorer from './pages/MarketplaceExplorer';
+import ListingDetail from './pages/ListingDetail';
+import CompanyDirectory from './pages/CompanyDirectory';
+import PublicCompanyProfile from './pages/PublicCompanyProfile';
 
 function HomePage() {
   return (
@@ -66,6 +69,9 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/marketplace" element={<MarketplaceExplorer />} />
+            <Route path="/marketplace/:id" element={<ListingDetail />} />
+            <Route path="/directory" element={<CompanyDirectory />} />
+            <Route path="/directory/:id" element={<PublicCompanyProfile />} />
             {/* Auth Routes */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

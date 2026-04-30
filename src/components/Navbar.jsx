@@ -23,7 +23,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Solutions', href: '/#services' },
     { name: 'Marketplace', href: '/marketplace' },
-    { name: 'Global Network', href: '/#directory' },
+    { name: 'Global Network', href: '/directory' },
     { name: 'Institutional', href: '/#about' },
   ];
 

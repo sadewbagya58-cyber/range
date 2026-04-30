@@ -74,6 +74,59 @@ export const deleteListing = async (id) => {
 };
 
 /**
+ * Companies Directory
+ */
+export const getCompanies = async (filters = {}) => {
+  let query = supabase
+    .from('companies')
+    .select('*')
+    .order('name');
+
+  if (filters.country && filters.country !== 'all') query = query.eq('country', filters.country);
+  if (filters.category && filters.category !== 'all') query = query.contains('categories', [filters.category]);
+  if (filters.verified) query = query.eq('verified', true);
+
+  const { data, error } = await query;
+  return { data, error };
+};
+
+export const getCompany = async (id) => {
+  const { data, error } = await supabase
+    .from('companies')
+    .select('*, listings(*)')
+    .eq('id', id)
+    .single();
+  return { data, error };
+};
+
+/**
+ * User Actions
+ */
+export const saveListing = async (userId, listingId) => {
+  const { data, error } = await supabase
+    .from('saved_listings')
+    .upsert({ user_id: userId, listing_id: listingId })
+    .select();
+  return { data, error };
+};
+
+export const sendInquiry = async (inquiryData) => {
+  const { data, error } = await supabase
+    .from('inquiries')
+    .insert(inquiryData)
+    .select();
+  return { data, error };
+};
+
+export const reportListing = async (reportData) => {
+  const { data, error } = await supabase
+    .from('reports')
+    .insert(reportData)
+    .select();
+  return { data, error };
+};
+
+/**
  * Storage
  */
 export const uploadFile = async (bucket, path, file) => {
