@@ -24,10 +24,10 @@ const DashboardLayout = ({ children }) => {
   const navigate = useNavigate();
 
   const menuItems = [
-    { name: 'Overview', icon: LayoutDashboard, path: '/dashboard' },
-    { name: 'Company Profile', icon: Building2, path: '/dashboard/company' },
+    { name: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
+    { name: 'Inbox', icon: MessageSquare, path: '/dashboard/inbox', count: 3 },
     { name: 'My Listings', icon: FileText, path: '/dashboard/listings' },
-    { name: 'Messages', icon: MessageSquare, path: '/dashboard/messages' },
+    { name: 'Company Profile', icon: Building2, path: '/dashboard/company' },
     { name: 'Settings', icon: Settings, path: '/dashboard/settings' },
   ];
 
@@ -149,10 +149,12 @@ const DashboardLayout = ({ children }) => {
           </div>
           
           <div className="flex items-center gap-6">
-            <button className="relative p-2 text-slate-400 hover:text-white transition-colors">
+            <Link to="/dashboard/inbox" className="relative p-2 text-slate-400 hover:text-white transition-colors">
               <Bell size={20} />
-              <span className="absolute top-2 right-2 w-2 h-2 bg-brand-orange rounded-full border-2 border-slate-950" />
-            </button>
+              {menuItems.find(i => i.name === 'Inbox')?.count > 0 && (
+                <span className="absolute top-2 right-2 w-2 h-2 bg-brand-orange rounded-full border-2 border-slate-950" />
+              )}
+            </Link>
             <div className="h-8 w-px bg-white/10" />
             <div className="flex items-center gap-3">
               <div className="text-right hidden sm:block">

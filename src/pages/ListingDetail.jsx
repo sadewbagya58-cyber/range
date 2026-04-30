@@ -22,8 +22,9 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { supabase } from '../services/supabase';
-import { getListings, saveListing, sendInquiry } from '../services/db';
+import { saveListing } from '../services/db';
 import useAuthStore from '../store/useAuthStore';
+import InquiryModal from '../components/modals/InquiryModal';
 
 const ListingDetail = () => {
   const { id } = useParams();
@@ -32,7 +33,7 @@ const ListingDetail = () => {
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [inquirySent, setInquirySent] = useState(false);
+  const [isInquiryOpen, setIsInquiryOpen] = useState(false);
 
   useEffect(() => {
     const fetchDetail = async () => {
@@ -55,18 +56,9 @@ const ListingDetail = () => {
     setSaving(false);
   };
 
-  const handleInquiry = async () => {
+  const openInquiry = () => {
     if (!user) return navigate('/login');
-    setSaving(true);
-    const { error } = await sendInquiry({
-      sender_id: user.id,
-      receiver_id: listing.user_id,
-      listing_id: id,
-      message: `I am interested in your listing: ${listing.title}`,
-      status: 'pending'
-    });
-    if (!error) setInquirySent(true);
-    setSaving(false);
+    setIsInquiryOpen(true);
   };
 
   if (loading) {
@@ -149,7 +141,7 @@ const ListingDetail = () => {
 
             {/* Quick Actions Mobile */}
             <div className="lg:hidden flex gap-4">
-              <button onClick={handleInquiry} className="flex-1 py-5 bg-brand-orange text-white rounded-2xl font-bold">
+              <button onClick={openInquiry} className="flex-1 py-5 bg-brand-orange text-white rounded-2xl font-bold">
                 Send Inquiry
               </button>
               <button onClick={handleSave} className="p-5 bg-slate-800 text-white rounded-2xl border border-white/5">
@@ -204,46 +196,45 @@ const ListingDetail = () => {
             {/* Inquiry Box */}
             <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-white/5 rounded-[2.5rem] p-8 sticky top-28">
               <h3 className="text-xl font-bold text-white mb-6">Contact Institutional Partner</h3>
-              {inquirySent ? (
-                <div className="bg-emerald-400/10 border border-emerald-400/20 p-6 rounded-2xl text-center">
-                  <CheckCircle2 size={32} className="text-emerald-400 mx-auto mb-3" />
-                  <div className="text-sm font-bold text-emerald-400 mb-1">Inquiry Sent Successfully</div>
-                  <div className="text-xs text-slate-500">The partner will respond via the internal messenger.</div>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  <button 
-                    onClick={handleInquiry}
-                    disabled={saving}
-                    className="w-full py-5 bg-brand-orange hover:bg-orange-600 text-white rounded-2xl font-bold shadow-xl shadow-brand-orange/20 transition-all flex items-center justify-center gap-3"
-                  >
-                    {saving ? <Loader2 size={20} className="animate-spin" /> : <MessageSquare size={20} />}
-                    Send Formal Inquiry
+              <div className="space-y-4">
+                <button 
+                  onClick={openInquiry}
+                  disabled={saving}
+                  className="w-full py-5 bg-brand-orange hover:bg-orange-600 text-white rounded-2xl font-bold shadow-xl shadow-brand-orange/20 transition-all flex items-center justify-center gap-3"
+                >
+                  <MessageSquare size={20} />
+                  Send Formal Inquiry
+                </button>
+                <button 
+                  onClick={handleSave}
+                  disabled={saving}
+                  className="w-full py-4 bg-slate-800/50 hover:bg-slate-800 text-slate-400 hover:text-white rounded-2xl font-bold text-xs uppercase tracking-widest border border-white/5 transition-all flex items-center justify-center gap-2"
+                >
+                  <Bookmark size={18} />
+                  Save for Review
+                </button>
+                <div className="pt-4 border-t border-white/5 flex justify-center gap-6">
+                  <button className="text-slate-500 hover:text-white transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                    <Share2 size={14} /> Share
                   </button>
-                  <button 
-                    onClick={handleSave}
-                    disabled={saving}
-                    className="w-full py-4 bg-slate-800/50 hover:bg-slate-800 text-slate-400 hover:text-white rounded-2xl font-bold text-xs uppercase tracking-widest border border-white/5 transition-all flex items-center justify-center gap-2"
-                  >
-                    <Bookmark size={18} />
-                    Save for Review
+                  <button className="text-slate-500 hover:text-red-400 transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                    <AlertTriangle size={14} /> Report
                   </button>
-                  <div className="pt-4 border-t border-white/5 flex justify-center gap-6">
-                    <button className="text-slate-500 hover:text-white transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
-                      <Share2 size={14} /> Share
-                    </button>
-                    <button className="text-slate-500 hover:text-red-400 transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
-                      <AlertTriangle size={14} /> Report
-                    </button>
-                  </div>
                 </div>
-              )}
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <InquiryModal 
+        isOpen={isInquiryOpen} 
+        onClose={() => setIsInquiryOpen(false)} 
+        listing={listing}
+      />
     </div>
   );
 };
+
 
 export default ListingDetail;

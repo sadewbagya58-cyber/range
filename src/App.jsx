@@ -21,6 +21,8 @@ import Dashboard from './pages/dashboard/Dashboard';
 import CompanyProfile from './pages/dashboard/CompanyProfile';
 import MyListings from './pages/dashboard/MyListings';
 import CreateListing from './pages/dashboard/CreateListing';
+import Inbox from './pages/dashboard/Inbox';
+import Chat from './pages/dashboard/Chat';
 import MarketplaceExplorer from './pages/MarketplaceExplorer';
 import ListingDetail from './pages/ListingDetail';
 import CompanyDirectory from './pages/CompanyDirectory';
@@ -81,6 +83,8 @@ function App() {
             <Route path="/dashboard/company" element={<CompanyProfile />} />
             <Route path="/dashboard/listings" element={<MyListings />} />
             <Route path="/dashboard/listings/new" element={<CreateListing />} />
+            <Route path="/dashboard/inbox" element={<Inbox />} />
+            <Route path="/dashboard/chat/:id" element={<Chat />} />
             
             {/* Fallback */}
             <Route path="*" element={<Navigate to="/" replace />} />

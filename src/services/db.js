@@ -118,6 +118,51 @@ export const sendInquiry = async (inquiryData) => {
   return { data, error };
 };
 
+export const getInquiries = async (userId, type = 'received') => {
+  let query = supabase
+    .from('inquiries')
+    .select('*, sender:profiles!sender_id(*), receiver:profiles!receiver_id(*), listing:listings(*)')
+    .order('created_at', { ascending: false });
+
+  if (type === 'received') {
+    query = query.eq('receiver_id', userId);
+  } else {
+    query = query.eq('sender_id', userId);
+  }
+
+  const { data, error } = await query;
+  return { data, error };
+};
+
+export const updateInquiryStatus = async (id, status) => {
+  const { data, error } = await supabase
+    .from('inquiries')
+    .update({ status })
+    .eq('id', id)
+    .select();
+  return { data, error };
+};
+
+/**
+ * Real-time Messaging
+ */
+export const getMessages = async (inquiryId) => {
+  const { data, error } = await supabase
+    .from('messages')
+    .select('*')
+    .eq('inquiry_id', inquiryId)
+    .order('created_at', { ascending: true });
+  return { data, error };
+};
+
+export const sendMessage = async (messageData) => {
+  const { data, error } = await supabase
+    .from('messages')
+    .insert(messageData)
+    .select();
+  return { data, error };
+};
+
 export const reportListing = async (reportData) => {
   const { data, error } = await supabase
     .from('reports')
